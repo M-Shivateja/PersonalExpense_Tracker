@@ -1,0 +1,27 @@
+.get {
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.get h1 {
+  font-size: 2.5rem;
+}
+
+.get p {
+  font-size: 1.2rem;
+}
+
+.get-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #61dafb;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.get-button:hover {
+  background-color: #21a1f1;
+}

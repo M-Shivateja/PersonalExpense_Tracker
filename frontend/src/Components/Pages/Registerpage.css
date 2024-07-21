@@ -1,0 +1,6 @@
+.register-page {
+  background-color: rgba(23, 84, 137, 0.612);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
