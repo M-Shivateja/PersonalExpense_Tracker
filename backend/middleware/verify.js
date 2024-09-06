@@ -2,7 +2,10 @@ const jwt = require("jsonwebtoken");
 
 async function requireSignIn(req, res, next) {
   try {
-    const decode = jwt.verify(req.headers.authorization, "Scrt");
+    const decode = jwt.verify(
+      req.headers.authorization,
+      process.env.JWT_SECRET
+    );
     req.user = decode.user;
     next();
   } catch (error) {

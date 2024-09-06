@@ -9,10 +9,14 @@ const Registerdata = require("./model/Register");
 const Verify = require("./middleware/verify");
 const cors = require("cors");
 const app = express();
+const dotenv = require("dotenv");
+
+//config dotenv
+dotenv.config();
 
 ///Database Connection
 mongoose
-  .connect("add you DB Connection string")
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("connected to Mongo Database"));
 
 /// defines the body format as json in each level where ever require
@@ -80,10 +84,15 @@ app.post("/login", async function (req, res) {
       },
     };
 
-    jwt.sign(payload, "Scrt", { expiresIn: 120000 }, (err, token) => {
-      if (err) throw err;
-      return res.json({ token, userId: existinguser.id });
-    });
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRE,
+      { expiresIn: 120000 },
+      (err, token) => {
+        if (err) throw err;
+        return res.json({ token, userId: existinguser.id });
+      }
+    );
   } catch (error) {
     console.log(error);
   }
@@ -224,6 +233,8 @@ app.get("/categories", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
   console.log("Server is running on port 5000");
 });
