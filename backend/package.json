@@ -4,10 +4,8 @@
   "description": "my appliction",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
-    "frontend": "npm start --prefix ./frontend",
-    "dev": "concurrently \"npm run server\"npm run frontend\""
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Shivateja",
   "license": "ISC",
