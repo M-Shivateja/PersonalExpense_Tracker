@@ -45,9 +45,12 @@ function Myprofile() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/myprofile", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          `${process.env.BACKEND_URL}/myprofile`,
+          {
+            headers: { Authorization: token },
+          }
+        );
         setUser(response.data);
         setLoading(false);
       } catch (error) {
@@ -58,9 +61,12 @@ function Myprofile() {
     const fetchExpenses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/expenses", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          `${process.env.BACKEND_URL}/expenses`,
+          {
+            headers: { Authorization: token },
+          }
+        );
         setExpenses(response.data);
         setLoadingExpenses(false);
       } catch (error) {
@@ -71,9 +77,12 @@ function Myprofile() {
     const fetchCategories = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/categories", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          `${process.env.BACKEND_URL}/categories`,
+          {
+            headers: { Authorization: token },
+          }
+        );
         setCategories(response.data);
         setLoadingCategories(false);
       } catch (error) {
@@ -106,11 +115,11 @@ function Myprofile() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/expenses", newExpense, {
+      await axios.post(`${process.env.BACKEND_URL}/expenses`, newExpense, {
         headers: { Authorization: token },
       });
       // Refresh expenses after adding new expense
-      const response = await axios.get("http://localhost:5000/expenses", {
+      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -130,14 +139,14 @@ function Myprofile() {
     try {
       const token = localStorage.getItem("token");
       await axios.patch(
-        `http://localhost:5000/expenses/${editingExpense._id}`,
+        `${process.env.BACKEND_URL}/expenses/${editingExpense._id}`,
         editingExpense,
         {
           headers: { Authorization: token },
         }
       );
       // Refresh expenses after update
-      const response = await axios.get("http://localhost:5000/expenses", {
+      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -150,11 +159,11 @@ function Myprofile() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/expenses/${id}`, {
+      await axios.delete(`${process.env.BACKEND_URL}/expenses/${id}`, {
         headers: { Authorization: token },
       });
       // Refresh expenses after deletion
-      const response = await axios.get("http://localhost:5000/expenses", {
+      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -168,16 +177,19 @@ function Myprofile() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/categories",
+        `${process.env.BACKEND_URL}/categories`,
         { name: newCategory },
         {
           headers: { Authorization: token },
         }
       );
       // Refresh categories after adding new one
-      const response = await axios.get("http://localhost:5000/categories", {
-        headers: { Authorization: token },
-      });
+      const response = await axios.get(
+        `${process.env.BACKEND_URL}/categories`,
+        {
+          headers: { Authorization: token },
+        }
+      );
       setCategories(response.data);
       setNewCategory("");
     } catch (error) {
