@@ -46,7 +46,7 @@ function Myprofile() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${process.env.BACKEND_URL}/myprofile`,
+         "https://personalexpense-tracker.onrender.com/myprofile",
           {
             headers: { Authorization: token },
           }
@@ -62,7 +62,7 @@ function Myprofile() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${process.env.BACKEND_URL}/expenses`,
+          "https://personalexpense-tracker.onrender.com/expenses",
           {
             headers: { Authorization: token },
           }
@@ -78,7 +78,7 @@ function Myprofile() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${process.env.BACKEND_URL}/categories`,
+         "https://personalexpense-tracker.onrender.com/categories",
           {
             headers: { Authorization: token },
           }
@@ -115,11 +115,11 @@ function Myprofile() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post(`${process.env.BACKEND_URL}/expenses`, newExpense, {
+      await axios.post("https://personalexpense-tracker.onrender.com/expenses", newExpense, {
         headers: { Authorization: token },
       });
       // Refresh expenses after adding new expense
-      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
+      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -146,7 +146,7 @@ function Myprofile() {
         }
       );
       // Refresh expenses after update
-      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
+      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -163,7 +163,7 @@ function Myprofile() {
         headers: { Authorization: token },
       });
       // Refresh expenses after deletion
-      const response = await axios.get(`${process.env.BACKEND_URL}/expenses`, {
+      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -177,7 +177,7 @@ function Myprofile() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `${process.env.BACKEND_URL}/categories`,
+        "https://personalexpense-tracker.onrender.com/categories",
         { name: newCategory },
         {
           headers: { Authorization: token },
@@ -185,7 +185,7 @@ function Myprofile() {
       );
       // Refresh categories after adding new one
       const response = await axios.get(
-        `${process.env.BACKEND_URL}/categories`,
+        "https://personalexpense-tracker.onrender.com/categories",
         {
           headers: { Authorization: token },
         }
