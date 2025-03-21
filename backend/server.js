@@ -22,7 +22,7 @@ mongoose
 /// defines the body format as json in each level where ever require
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors({ origin: "*" }));
+app.use(cors());
 
 //// registration data checks
 app.post("/register", async function (req, res) {
@@ -86,7 +86,7 @@ app.post("/login", async function (req, res) {
 
     jwt.sign(
       payload,
-      process.env.JWT_SECRE,
+      process.env.JWT_SECRET,
       { expiresIn: 120000 },
       (err, token) => {
         if (err) throw err;

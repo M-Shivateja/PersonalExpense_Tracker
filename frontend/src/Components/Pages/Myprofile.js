@@ -45,12 +45,9 @@ function Myprofile() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-         "https://personalexpense-tracker.onrender.com/myprofile",
-          {
-            headers: { Authorization: token },
-          }
-        );
+        const response = await axios.get("http://localhost:5000/myprofile", {
+          headers: { Authorization: token },
+        });
         setUser(response.data);
         setLoading(false);
       } catch (error) {
@@ -61,12 +58,9 @@ function Myprofile() {
     const fetchExpenses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "https://personalexpense-tracker.onrender.com/expenses",
-          {
-            headers: { Authorization: token },
-          }
-        );
+        const response = await axios.get("http://localhost:5000/expenses", {
+          headers: { Authorization: token },
+        });
         setExpenses(response.data);
         setLoadingExpenses(false);
       } catch (error) {
@@ -77,12 +71,9 @@ function Myprofile() {
     const fetchCategories = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-         "https://personalexpense-tracker.onrender.com/categories",
-          {
-            headers: { Authorization: token },
-          }
-        );
+        const response = await axios.get("http://localhost:5000/categories", {
+          headers: { Authorization: token },
+        });
         setCategories(response.data);
         setLoadingCategories(false);
       } catch (error) {
@@ -115,11 +106,11 @@ function Myprofile() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("https://personalexpense-tracker.onrender.com/expenses", newExpense, {
+      await axios.post("http://localhost:5000/expenses", newExpense, {
         headers: { Authorization: token },
       });
       // Refresh expenses after adding new expense
-      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
+      const response = await axios.get("http://localhost:5000/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -146,7 +137,7 @@ function Myprofile() {
         }
       );
       // Refresh expenses after update
-      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
+      const response = await axios.get("http://localhost:5000/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -163,7 +154,7 @@ function Myprofile() {
         headers: { Authorization: token },
       });
       // Refresh expenses after deletion
-      const response = await axios.get("https://personalexpense-tracker.onrender.com/expenses", {
+      const response = await axios.get("http://localhost:5000/expenses", {
         headers: { Authorization: token },
       });
       setExpenses(response.data);
@@ -177,19 +168,16 @@ function Myprofile() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://personalexpense-tracker.onrender.com/categories",
+        "http://localhost:5000/categories",
         { name: newCategory },
         {
           headers: { Authorization: token },
         }
       );
       // Refresh categories after adding new one
-      const response = await axios.get(
-        "https://personalexpense-tracker.onrender.com/categories",
-        {
-          headers: { Authorization: token },
-        }
-      );
+      const response = await axios.get("http://localhost:5000/categories", {
+        headers: { Authorization: token },
+      });
       setCategories(response.data);
       setNewCategory("");
     } catch (error) {

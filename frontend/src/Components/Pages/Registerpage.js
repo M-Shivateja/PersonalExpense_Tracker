@@ -15,7 +15,7 @@ function Registerpage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://personalexpense-tracker.onrender.com/register", {
+      const response = await axios.post("http://localhost:5000/register", {
         email,
         Name,
         phone,
