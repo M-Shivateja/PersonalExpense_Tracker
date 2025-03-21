@@ -45,9 +45,12 @@ function Myprofile() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/myprofile", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          "https://personalexpense-tracker.onrender.com/myprofile",
+          {
+            headers: { Authorization: token },
+          }
+        );
         setUser(response.data);
         setLoading(false);
       } catch (error) {
@@ -58,9 +61,12 @@ function Myprofile() {
     const fetchExpenses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/expenses", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          "https://personalexpense-tracker.onrender.com/expenses",
+          {
+            headers: { Authorization: token },
+          }
+        );
         setExpenses(response.data);
         setLoadingExpenses(false);
       } catch (error) {
@@ -71,9 +77,12 @@ function Myprofile() {
     const fetchCategories = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/categories", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get(
+          "https://personalexpense-tracker.onrender.com/categories",
+          {
+            headers: { Authorization: token },
+          }
+        );
         setCategories(response.data);
         setLoadingCategories(false);
       } catch (error) {
@@ -106,13 +115,20 @@ function Myprofile() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/expenses", newExpense, {
-        headers: { Authorization: token },
-      });
+      await axios.post(
+        "https://personalexpense-tracker.onrender.com/expenses",
+        newExpense,
+        {
+          headers: { Authorization: token },
+        }
+      );
       // Refresh expenses after adding new expense
-      const response = await axios.get("http://localhost:5000/expenses", {
-        headers: { Authorization: token },
-      });
+      const response = await axios.get(
+        "https://personalexpense-tracker.onrender.com/expenses",
+        {
+          headers: { Authorization: token },
+        }
+      );
       setExpenses(response.data);
       setNewExpense({
         date: "",
@@ -137,9 +153,12 @@ function Myprofile() {
         }
       );
       // Refresh expenses after update
-      const response = await axios.get("http://localhost:5000/expenses", {
-        headers: { Authorization: token },
-      });
+      const response = await axios.get(
+        "https://personalexpense-tracker.onrender.com/expenses",
+        {
+          headers: { Authorization: token },
+        }
+      );
       setExpenses(response.data);
       setEditingExpense(null); // Clear editing state
     } catch (error) {
@@ -154,9 +173,12 @@ function Myprofile() {
         headers: { Authorization: token },
       });
       // Refresh expenses after deletion
-      const response = await axios.get("http://localhost:5000/expenses", {
-        headers: { Authorization: token },
-      });
+      const response = await axios.get(
+        "https://personalexpense-tracker.onrender.com/expenses",
+        {
+          headers: { Authorization: token },
+        }
+      );
       setExpenses(response.data);
     } catch (error) {
       console.error("Failed to delete expense", error);
@@ -168,16 +190,19 @@ function Myprofile() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/categories",
+        "https://personalexpense-tracker.onrender.com/categories",
         { name: newCategory },
         {
           headers: { Authorization: token },
         }
       );
       // Refresh categories after adding new one
-      const response = await axios.get("http://localhost:5000/categories", {
-        headers: { Authorization: token },
-      });
+      const response = await axios.get(
+        "https://personalexpense-tracker.onrender.com/categories",
+        {
+          headers: { Authorization: token },
+        }
+      );
       setCategories(response.data);
       setNewCategory("");
     } catch (error) {

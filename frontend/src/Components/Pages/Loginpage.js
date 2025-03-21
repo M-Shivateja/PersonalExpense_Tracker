@@ -14,10 +14,13 @@ function Loginpage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://personalexpense-tracker.onrender.com/login",
+        {
+          email,
+          password,
+        }
+      );
       const token = response.data.token;
       if (token) {
         localStorage.setItem("token", token);
